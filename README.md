@@ -85,7 +85,8 @@ do not expose internal gRPC, database, Redis, or observability ports.
 
 The native API client supports authenticated `GET /cart`, `PUT /cart`, and
 `DELETE /cart` calls through the BFF. The cart model is shared with the native
-checkout work so cart state can be synchronized across devices.
+checkout work so cart state can be synchronized across devices. The catalog
+now presents a native cart sheet with quantity controls and clear-cart support.
 
 ## Releases
 
