@@ -14,7 +14,11 @@ struct StoreProduct: Decodable, Identifiable {
 struct StoreProductsResponse: Decodable { let products: [StoreProduct] }
 
 struct StoreMeshAPI {
-    var baseURL = URL(string: "http://localhost:8080")!
+    var baseURL: URL
+
+    init(baseURL: URL? = nil) {
+        self.baseURL = baseURL ?? APIConfiguration.baseURL
+    }
 
     func login(email: String, password: String) async throws -> StoreLogin {
         try await request(path: "/api/v1/auth/login", method: "POST", body: ["email": email, "password": password])
@@ -37,5 +41,25 @@ struct StoreMeshAPI {
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
         return try JSONDecoder().decode(T.self, from: data)
+    }
+}
+
+enum APIConfiguration {
+    private static let defaultBaseURL = URL(string: "http://localhost:8080")!
+
+    static var baseURL: URL {
+        let launchArguments = ProcessInfo.processInfo.arguments
+        if let index = launchArguments.firstIndex(of: "-storemeshApiBaseURL"),
+           launchArguments.indices.contains(index + 1),
+           let url = URL(string: launchArguments[index + 1]) {
+            return url
+        }
+
+        if let value = ProcessInfo.processInfo.environment["STOREMESH_API_BASE_URL"],
+           let url = URL(string: value) {
+            return url
+        }
+
+        return defaultBaseURL
     }
 }

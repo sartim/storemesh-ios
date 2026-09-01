@@ -29,8 +29,47 @@ StoreMesh/
 ```
 
 Create or open the native iOS app target in Xcode using the `StoreMesh` source
-layout. Local development points at the BFF port-forward:
-`http://localhost:8080/api/v1`.
+layout. The client makes all mobile API requests to the BFF; it never calls
+the internal gRPC services directly. The default simulator URL is:
+`http://localhost:8080`.
+
+## Backend and ngrok request flow
+
+The request path for login and subsequent customer requests is:
+
+```text
+iOS app → HTTPS ngrok URL → StoreMesh BFF → internal gRPC services
+                                      ├→ User Service (login/session)
+                                      ├→ Product Service (catalog)
+                                      └→ Order Service (commerce)
+```
+
+For a physical device, start the local port forwards and expose only the BFF:
+
+```sh
+./scripts/port-forward-local.sh
+ngrok http 8080
+curl https://YOUR-NGROK-DOMAIN.ngrok-free.app/healthz
+```
+
+Configure the ngrok origin in Xcode with either a launch argument:
+
+```text
+-storemeshApiBaseURL https://YOUR-NGROK-DOMAIN.ngrok-free.app
+```
+
+or the `STOREMESH_API_BASE_URL` environment variable. The launch argument has
+priority. Do not include `/api/v1` in the value; the client appends that path.
+The default `localhost` value remains appropriate for an iOS Simulator when
+the BFF is forwarded on the Mac.
+
+The login request is `POST /api/v1/auth/login`. The BFF authenticates through
+the User Service, returns the access/refresh session, and the app stores the
+access token in its local session state. Catalog requests then send the access
+token as a Bearer token to the BFF. The app should use HTTPS ngrok URLs only
+for shared or physical-device testing, and ngrok authentication or a reserved
+domain should be used before sharing a development endpoint. Never expose
+gRPC, PostgreSQL, Redis, or observability ports through ngrok.
 
 For testing on a physical device, start the local BFF and expose only port
 8080 through an authenticated ngrok tunnel:
