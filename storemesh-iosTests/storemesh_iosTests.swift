@@ -10,8 +10,9 @@ import Testing
 
 struct storemesh_iosTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test func productFormatsMinorCurrencyUnits() async throws {
+        let product = StoreProduct(id: "p-1", name: "Desk lamp", description: "", priceMinor: "1299", currency: "USD")
+        #expect(product.priceText == "USD 12.99")
     }
 
 }
