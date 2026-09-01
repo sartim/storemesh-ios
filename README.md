@@ -32,6 +32,17 @@ Create or open the native iOS app target in Xcode using the `StoreMesh` source
 layout. Local development points at the BFF port-forward:
 `http://localhost:8080/api/v1`.
 
+For testing on a physical device, start the local BFF and expose only port
+8080 through an authenticated ngrok tunnel:
+
+```sh
+ngrok http 8080
+```
+
+Verify `https://YOUR-NGROK-DOMAIN.ngrok-free.app/healthz`, then use that HTTPS
+origin as the app's API base URL. Keep tunnel URLs out of source control and
+do not expose internal gRPC, database, Redis, or observability ports.
+
 ## Releases
 
 Run the **iOS release** workflow manually. `semantic-release` determines the
