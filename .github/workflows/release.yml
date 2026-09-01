@@ -34,7 +34,7 @@ jobs:
           sed -i '' "s/CURRENT_PROJECT_VERSION = [^;]*/CURRENT_PROJECT_VERSION = $build_number/g" storemesh-ios.xcodeproj/project.pbxproj
           echo "tag=v$RELEASE_VERSION" >> "$GITHUB_OUTPUT"
       - name: Build simulator app
-        run: xcodebuild -project storemesh-ios.xcodeproj -scheme StoreMesh -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build
+        run: xcodebuild -project storemesh-ios.xcodeproj -scheme storemesh-ios -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build
       - name: Commit version and tag
         env:
           RELEASE_VERSION: ${{ inputs.version }}
