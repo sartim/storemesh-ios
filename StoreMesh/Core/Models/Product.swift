@@ -7,3 +7,11 @@ struct Product: Codable, Identifiable, Sendable {
     let priceMinor: Int
     let currency: String
 }
+
+struct CartLine: Codable, Identifiable, Sendable {
+    let productId: String
+    var quantity: Int
+    var id: String { productId }
+}
+
+struct Cart: Codable, Sendable { var lines: [CartLine] }

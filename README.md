@@ -83,6 +83,10 @@ Verify `https://YOUR-NGROK-DOMAIN.ngrok-free.app/healthz`, then use that HTTPS
 origin as the app's API base URL. Keep tunnel URLs out of source control and
 do not expose internal gRPC, database, Redis, or observability ports.
 
+The native API client supports authenticated `GET /cart`, `PUT /cart`, and
+`DELETE /cart` calls through the BFF. The cart model is shared with the native
+checkout work so cart state can be synchronized across devices.
+
 ## Releases
 
 Run the **iOS release** workflow manually. `semantic-release` determines the
