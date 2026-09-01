@@ -31,3 +31,10 @@ StoreMesh/
 Create or open the native iOS app target in Xcode using the `StoreMesh` source
 layout. Local development points at the BFF port-forward:
 `http://localhost:8080/api/v1`.
+
+## Releases
+
+Run the **iOS release** workflow manually with a `MAJOR.MINOR.PATCH` version.
+It stamps `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`, builds the
+simulator target, and creates the matching `vX.Y.Z` tag. Signing and App Store
+distribution can be added later through protected GitHub Environment secrets.
