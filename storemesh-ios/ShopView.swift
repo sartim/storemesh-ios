@@ -39,7 +39,7 @@ struct ShopView: View {
 
     private func loadProducts() async {
         do { products = try await StoreMeshAPI().products(token: token) }
-        catch { error = "Unable to load products. Check the BFF connection." }
+        catch { self.error = "Unable to load products. Check the BFF connection." }
     }
 }
 
@@ -54,7 +54,7 @@ private struct OrdersView: View {
             if !error.isEmpty { Text(error).foregroundStyle(.red) }
             else if orders.isEmpty { ContentUnavailableView("No orders yet", systemImage: "shippingbox") }
             else { ForEach(orders) { order in VStack(alignment: .leading, spacing: 5) { Text(order.orderId).font(.headline); Text(order.status.replacingOccurrences(of: "ORDER_STATUS_", with: "").capitalized).foregroundStyle(.secondary); Text(order.totalText).font(.subheadline.weight(.semibold)) }.frame(maxWidth: .infinity, alignment: .leading).padding().background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14)) } }
-        }.task { do { orders = try await StoreMeshAPI().orders(token: token) } catch { error = "Unable to load your orders." } }
+        }.task { do { orders = try await StoreMeshAPI().orders(token: token) } catch { self.error = "Unable to load your orders." } }
     }
 }
 

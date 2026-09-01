@@ -1,34 +1,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("storemesh.accessToken") private var accessToken = ""
-    @AppStorage("storemesh.refreshToken") private var refreshToken = ""
+    private let session = SessionStore()
     @State private var phase: AppPhase = .splash
 
     var body: some View {
         Group {
             switch phase {
             case .splash: SplashView()
-            case .login: LoginView { session in
-                accessToken = session.accessToken
-                refreshToken = session.refreshToken
+            case .login: LoginView { authenticatedSession in
+                session.save(authenticatedSession)
                 phase = .shop
             }
-            case .shop: ShopView(token: accessToken) {
-                accessToken = ""
-                refreshToken = ""
+            case .shop: ShopView(token: session.accessToken) {
+                session.clear()
                 phase = .login
             }
             }
         }
         .task {
             try? await Task.sleep(for: .milliseconds(800))
-            if accessToken.isEmpty, !refreshToken.isEmpty,
-               let session = try? await StoreMeshAPI().refresh(refreshToken: refreshToken) {
-                accessToken = session.accessToken
-                refreshToken = session.refreshToken
+            if session.accessToken.isEmpty, !session.refreshToken.isEmpty,
+               let refreshed = try? await StoreMeshAPI().refresh(refreshToken: session.refreshToken) {
+                session.save(refreshed)
             }
-            phase = accessToken.isEmpty ? .login : .shop
+            phase = session.accessToken.isEmpty ? .login : .shop
         }
     }
 }
