@@ -34,7 +34,8 @@ layout. Local development points at the BFF port-forward:
 
 ## Releases
 
-Run the **iOS release** workflow manually with a `MAJOR.MINOR.PATCH` version.
-It stamps `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`, builds the
-simulator target, and creates the matching `vX.Y.Z` tag. Signing and App Store
+Run the **iOS release** workflow manually. `semantic-release` determines the
+next `MAJOR.MINOR.PATCH` from Conventional Commits, stamps
+`MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`, creates the GitHub
+release/tag, and builds the simulator target. Signing and App Store
 distribution can be added later through protected GitHub Environment secrets.
