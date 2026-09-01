@@ -1,0 +1,16 @@
+name: StoreMesh
+options:
+  minimumXcodeGenVersion: 2.38.0
+targets:
+  StoreMesh:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: StoreMesh
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.storemesh.ios
+        SWIFT_VERSION: "6.0"
+        INFOPLIST_KEY_CFBundleDisplayName: StoreMesh
+        INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking: YES
