@@ -24,6 +24,10 @@ struct StoreMeshAPI {
         try await request(path: "/api/v1/auth/login", method: "POST", body: ["email": email, "password": password])
     }
 
+    func refresh(refreshToken: String) async throws -> StoreLogin {
+        try await request(path: "/api/v1/auth/refresh", method: "POST", body: ["refreshToken": refreshToken])
+    }
+
     func products(token: String) async throws -> [StoreProduct] {
         let response: StoreProductsResponse = try await request(path: "/api/v1/products?page_size=100&status=PRODUCT_STATUS_ACTIVE", token: token)
         return response.products

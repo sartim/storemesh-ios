@@ -2,17 +2,27 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("storemesh.accessToken") private var accessToken = ""
+    @AppStorage("storemesh.refreshToken") private var refreshToken = ""
     @State private var phase: AppPhase = .splash
 
     var body: some View {
         Group {
             switch phase {
             case .splash: SplashView()
-            case .login: LoginView { token in accessToken = token; phase = .shop }
-            case .shop: ShopView(token: accessToken) { accessToken = ""; phase = .login }
+            case .login: LoginView { session in
+                accessToken = session.accessToken
+                refreshToken = session.refreshToken
+                phase = .shop
+            }
+            case .shop: ShopView(token: accessToken) { accessToken = ""; refreshToken = ""; phase = .login }
             }
         }.task {
             try? await Task.sleep(for: .milliseconds(800))
+            if accessToken.isEmpty, !refreshToken.isEmpty,
+               let session = try? await StoreMeshAPI().refresh(refreshToken: refreshToken) {
+                accessToken = session.accessToken
+                refreshToken = session.refreshToken
+            }
             phase = accessToken.isEmpty ? .login : .shop
         }
     }
@@ -43,7 +53,7 @@ private struct SplashView: View {
 }
 
 private struct LoginView: View {
-    var onLogin: (String) -> Void
+    var onLogin: (StoreLogin) -> Void
     @State private var email = ""
     @State private var password = ""
     @State private var error = ""
@@ -104,7 +114,7 @@ private struct LoginView: View {
             defer { isLoading = false }
             do {
                 let session = try await StoreMeshAPI().login(email: normalizedEmail, password: password)
-                onLogin(session.accessToken)
+                onLogin(session)
             } catch {
                 self.error = "Sign in failed. Check your credentials and try again."
             }
