@@ -8,7 +8,7 @@ Native iOS client foundation for StoreMesh.
 - SwiftUI
 - Swift concurrency (`async`/`await`)
 - SwiftData for local client-side persistence when introduced
-- BFF REST/JSON as the mobile-facing API boundary
+- BFF REST/JSON and GraphQL as the mobile-facing API boundary
 
 No cross-platform UI framework is used. The iOS app will follow Apple’s native
 SwiftUI navigation, accessibility, previews, and adaptive layout patterns.
@@ -83,10 +83,11 @@ Verify `https://YOUR-NGROK-DOMAIN.ngrok-free.app/healthz`, then use that HTTPS
 origin as the app's API base URL. Keep tunnel URLs out of source control and
 do not expose internal gRPC, database, Redis, or observability ports.
 
-The native API client supports authenticated `GET /cart`, `PUT /cart`, and
-`DELETE /cart` calls through the BFF. The cart model is shared with the native
-checkout work so cart state can be synchronized across devices. The catalog
-now presents a native cart sheet with quantity controls and clear-cart support.
+The native API client supports authenticated cart and order calls through the
+BFF. The cart model is shared with native checkout work so cart state can be
+synchronized across devices. The catalog now presents a native cart sheet
+with quantity controls and clear-cart support. GraphQL adoption and native
+checkout UI remain the next iOS slice; REST remains available for compatibility.
 
 ## Releases
 
