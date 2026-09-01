@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CatalogView: View {
+    let accessToken: String
     @State private var products: [Product] = []
     @State private var isLoading = false
     @State private var errorMessage: String?
@@ -34,7 +35,7 @@ struct CatalogView: View {
         isLoading = true
         defer { isLoading = false }
         do {
-            products = try await api.products()
+            products = try await api.products(accessToken: accessToken)
             errorMessage = nil
         } catch {
             errorMessage = "Start the local BFF and try again."
