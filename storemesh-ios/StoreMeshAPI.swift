@@ -13,6 +13,19 @@ struct StoreProduct: Decodable, Identifiable {
 
 struct StoreProductsResponse: Decodable { let products: [StoreProduct] }
 
+struct StoreOrder: Decodable, Identifiable {
+    let orderId: String
+    let customerId: String
+    let totalMinor: Int
+    let currency: String
+    let status: String
+    let createdAt: String
+    var id: String { orderId }
+    var totalText: String { "\(currency.isEmpty ? "USD" : currency) \(String(format: "%.2f", Double(totalMinor) / 100))" }
+}
+
+struct StoreOrdersResponse: Decodable { let orders: [StoreOrder] }
+
 struct StoreMeshAPI {
     var baseURL: URL
 
@@ -31,6 +44,11 @@ struct StoreMeshAPI {
     func products(token: String) async throws -> [StoreProduct] {
         let response: StoreProductsResponse = try await request(path: "/api/v1/products?page_size=100&status=PRODUCT_STATUS_ACTIVE", token: token)
         return response.products
+    }
+
+    func orders(token: String) async throws -> [StoreOrder] {
+        let response: StoreOrdersResponse = try await request(path: "/api/v1/orders?page_size=50", token: token)
+        return response.orders
     }
 
     private func request<T: Decodable>(path: String, method: String = "GET", body: [String: String]? = nil, token: String? = nil) async throws -> T {

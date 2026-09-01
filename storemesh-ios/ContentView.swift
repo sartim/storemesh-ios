@@ -128,6 +128,7 @@ private struct ShopView: View {
     @State private var products: [StoreProduct] = []
     @State private var search = ""
     @State private var showMenu = false
+    @State private var showOrders = false
     @State private var error = ""
     private var filtered: [StoreProduct] { products.filter { search.isEmpty || $0.name.localizedCaseInsensitiveContains(search) || $0.description.localizedCaseInsensitiveContains(search) } }
 
@@ -135,17 +136,21 @@ private struct ShopView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
+                    if showOrders {
+                        OrdersView(token: token)
+                    } else {
                     Text("Find your next favourite").font(.largeTitle.bold())
                     Text("Curated picks, everyday deals.").foregroundStyle(.secondary)
                     TextField("Search products", text: $search).textFieldStyle(.roundedBorder)
                     if !error.isEmpty { Text(error).foregroundStyle(.red) }
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 160), spacing: 14)], spacing: 14) { ForEach(filtered) { ProductCard(product: $0) } }
+                    }
                 }.padding()
             }.navigationTitle("Shop")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) { Button { showMenu = true } label: { Label("Menu", systemImage: "line.3.horizontal") } }
                 ToolbarItem(placement: .topBarTrailing) { Image(systemName: "bag") }
-            }.sheet(isPresented: $showMenu) { MenuView(onLogout: onLogout) }
+            }.sheet(isPresented: $showMenu) { MenuView(onOrders: { showOrders = true }, onShop: { showOrders = false }, onLogout: onLogout) }
             .task { await loadProducts() }
         }
     }
@@ -153,6 +158,30 @@ private struct ShopView: View {
     private func loadProducts() async {
         do { products = try await StoreMeshAPI().products(token: token) }
         catch let requestError { error = requestError.localizedDescription }
+    }
+}
+
+private struct OrdersView: View {
+    let token: String
+    @State private var orders: [StoreOrder] = []
+    @State private var error = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("My orders").font(.largeTitle.bold())
+            if !error.isEmpty { Text(error).foregroundStyle(.red) }
+            else if orders.isEmpty { ContentUnavailableView("No orders yet", systemImage: "shippingbox") }
+            else { ForEach(orders) { order in
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(order.orderId).font(.headline)
+                    Text(order.status.replacingOccurrences(of: "ORDER_STATUS_", with: "").capitalized).foregroundStyle(.secondary)
+                    Text(order.totalText).font(.subheadline.weight(.semibold))
+                }.frame(maxWidth: .infinity, alignment: .leading).padding().background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14))
+            } }
+        }.task {
+            do { orders = try await StoreMeshAPI().orders(token: token) }
+            catch { error = "Unable to load your orders." }
+        }
     }
 }
 
@@ -169,8 +198,10 @@ private struct ProductCard: View {
 }
 
 private struct MenuView: View {
+    var onOrders: () -> Void
+    var onShop: () -> Void
     var onLogout: () -> Void
     var body: some View {
-        NavigationStack { List { Label("Shop", systemImage: "bag"); Label("My orders", systemImage: "shippingbox"); Label("Saved items", systemImage: "heart"); Button("Sign out", role: .destructive, action: onLogout) }.navigationTitle("StoreMesh") }
+        NavigationStack { List { Button(action: onShop) { Label("Shop", systemImage: "bag") }; Button(action: onOrders) { Label("My orders", systemImage: "shippingbox") }; Label("Saved items", systemImage: "heart"); Button("Sign out", role: .destructive, action: onLogout) }.navigationTitle("StoreMesh") }
     }
 }
