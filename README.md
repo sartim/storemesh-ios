@@ -63,10 +63,10 @@ priority. Do not include `/api/v1` in the value; the client appends that path.
 The default `localhost` value remains appropriate for an iOS Simulator when
 the BFF is forwarded on the Mac.
 
-The login request is `POST /api/v1/auth/login`. The BFF authenticates through
-the User Service, returns the access/refresh session, and the app stores the
-access token in its local session state. Catalog requests then send the access
-token as a Bearer token to the BFF. The app should use HTTPS ngrok URLs only
+Keycloak migration uses Apple's `ASWebAuthenticationSession` with the
+`storemesh-ios://oauth/callback` redirect and Authorization Code + PKCE. The
+app will store resulting tokens in Keychain and send access tokens as Bearer
+tokens to the BFF. The app should use HTTPS ngrok URLs only
 for shared or physical-device testing, and ngrok authentication or a reserved
 domain should be used before sharing a development endpoint. Never expose
 gRPC, PostgreSQL, Redis, or observability ports through ngrok.
