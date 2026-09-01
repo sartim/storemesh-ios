@@ -65,8 +65,9 @@ the BFF is forwarded on the Mac.
 
 Keycloak migration uses Apple's `ASWebAuthenticationSession` with the
 `storemesh-ios://oauth/callback` redirect and Authorization Code + PKCE. The
-app will store resulting tokens in Keychain and send access tokens as Bearer
-tokens to the BFF. The app should use HTTPS ngrok URLs only
+native authorization and token-exchange component is in
+`StoreMesh/Features/Auth/OIDCAuth.swift`. The app will store resulting tokens
+in Keychain and send access tokens as Bearer tokens to the BFF. The app should use HTTPS ngrok URLs only
 for shared or physical-device testing, and ngrok authentication or a reserved
 domain should be used before sharing a development endpoint. Never expose
 gRPC, PostgreSQL, Redis, or observability ports through ngrok.
