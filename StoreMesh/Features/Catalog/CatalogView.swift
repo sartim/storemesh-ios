@@ -7,6 +7,7 @@ struct CatalogView: View {
     @State private var errorMessage: String?
     @State private var cart = Cart(lines: [])
     @State private var showingCart = false
+    @State private var featureFlags = FeatureFlags.defaults
 
     private let api = APIClient()
 
@@ -30,7 +31,7 @@ struct CatalogView: View {
             .navigationTitle("StoreMesh")
             .toolbar { ToolbarItem(placement: .topBarTrailing) { Button { showingCart = true } label: { Label("Cart (\(cart.lines.reduce(0) { $0 + $1.quantity }))", systemImage: "cart") } } }
             .sheet(isPresented: $showingCart) { CartView(products: products, cart: $cart, onChange: saveCart, onClear: clearCart) }
-            .task { await loadProducts(); await loadCart() }
+            .task { featureFlags = await api.featureFlags(accessToken: accessToken); await loadProducts(); await loadCart() }
             .refreshable { await loadProducts() }
         }
     }

@@ -3,6 +3,16 @@ import Foundation
 struct APIClient: Sendable {
     var baseURL = URL(string: "http://localhost:8080/api/v1")!
 
+    func featureFlags(accessToken: String) async -> FeatureFlags {
+        do {
+            var request = URLRequest(url: baseURL.appending(path: "config"))
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { return .defaults }
+            return try JSONDecoder().decode(FeatureFlags.self, from: data)
+        } catch { return .defaults }
+    }
+
     func products(accessToken: String? = nil) async throws -> [Product] {
         var request = URLRequest(url: baseURL.appending(path: "products"))
         if let accessToken { request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization") }
