@@ -14,9 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run unit and UI tests
-        run: >-
-          xcodebuild test
-          -project storemesh-ios.xcodeproj
-          -scheme storemesh-ios
-          -destination 'platform=iOS Simulator,name=iPhone 16e,OS=latest'
-          CODE_SIGNING_ALLOWED=NO
+        run: |
+          simulator_id="$(xcrun simctl list devices available | awk -F '[()]' '/iPhone/{print $2; exit}')"
+          test -n "$simulator_id"
+          xcodebuild test \
+            -project storemesh-ios.xcodeproj \
+            -scheme storemesh-ios \
+            -destination "id=$simulator_id" \
+            CODE_SIGNING_ALLOWED=NO
