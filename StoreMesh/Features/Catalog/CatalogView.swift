@@ -40,14 +40,14 @@ struct CatalogView: View {
         isLoading = true
         defer { isLoading = false }
         do {
-            products = try await api.products(accessToken: accessToken)
+            products = try await api.graphQLProducts(accessToken: accessToken)
             errorMessage = nil
         } catch {
             errorMessage = "Start the local BFF and try again."
         }
     }
 
-    private func loadCart() async { do { cart = try await api.cart(accessToken: accessToken) } catch { /* Empty cart is a valid first-run state. */ } }
+    private func loadCart() async { do { cart = try await api.graphQLCart(accessToken: accessToken) } catch { /* Empty cart is a valid first-run state. */ } }
     private func saveCart(_ next: Cart) async { do { cart = try await api.saveCart(next, accessToken: accessToken) } catch { errorMessage = "Unable to save your cart." } }
     private func clearCart() async { do { try await api.clearCart(accessToken: accessToken); cart = Cart(lines: []) } catch { errorMessage = "Unable to clear your cart." } }
 }

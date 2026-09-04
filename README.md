@@ -96,3 +96,10 @@ next `MAJOR.MINOR.PATCH` from Conventional Commits, stamps
 `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`, creates the GitHub
 release/tag, and builds the simulator target. Signing and App Store
 distribution can be added later through protected GitHub Environment secrets.
+## API transport
+
+The app uses the Go BFF as its only API origin. Catalog and cart reads use the
+authenticated GraphQL endpoint (`/api/v1/graphql`) for API composition; REST
+remains available for feature flags, cart writes, and compatibility operations.
+GraphQL transport is isolated in `APIClient` so SwiftUI views do not own
+request construction or response parsing.
