@@ -1,0 +1,22 @@
+name: iOS CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run unit and UI tests
+        run: >-
+          xcodebuild test
+          -project storemesh-ios.xcodeproj
+          -scheme storemesh-ios
+          -destination 'platform=iOS Simulator,name=iPhone 16e,OS=latest'
+          CODE_SIGNING_ALLOWED=NO

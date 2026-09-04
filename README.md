@@ -104,3 +104,7 @@ now also handles cart updates, cart clearing, and idempotent order creation;
 REST remains available for feature flags and compatibility operations.
 GraphQL transport is isolated in `APIClient` so SwiftUI views do not own
 request construction or response parsing.
+
+The iOS CI workflow runs the unit and UI launch tests on a hosted iPhone
+Simulator. Network-backed login and checkout scenarios remain a separate
+environment test because they require a reachable BFF and Keycloak issuer.
