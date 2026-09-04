@@ -21,4 +21,5 @@ jobs:
           -project storemesh-ios.xcodeproj
           -scheme storemesh-ios
           -destination 'platform=iOS Simulator,name=iPhone 16'
+          -parallel-testing-enabled NO
           CODE_SIGNING_ALLOWED=NO
