@@ -13,12 +13,12 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      # Do not pin an SDK runtime: GitHub-hosted macOS images rotate the
+      # installed iOS simulator versions independently of this workflow.
       - name: Run unit and UI tests
         run: >-
           xcodebuild test
           -project storemesh-ios.xcodeproj
           -scheme storemesh-ios
-          # Do not pin an SDK runtime: GitHub-hosted macOS images rotate the
-          # installed iOS simulator versions independently of this workflow.
           -destination 'platform=iOS Simulator,name=iPhone 16'
           CODE_SIGNING_ALLOWED=NO
