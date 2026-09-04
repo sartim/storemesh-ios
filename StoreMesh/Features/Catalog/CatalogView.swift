@@ -53,4 +53,4 @@ struct CatalogView: View {
     private func checkout() async { do { _ = try await api.graphQLCreateOrder(cart, accessToken: accessToken); try await api.graphQLClearCart(accessToken: accessToken); cart = Cart(lines: []); showingCart = false } catch { errorMessage = "Checkout failed. Please try again." } }
 }
 
-#Preview { CatalogView() }
+#Preview { CatalogView(accessToken: "") }

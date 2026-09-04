@@ -32,7 +32,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A40D3721304728FA00C51278 /* storemesh-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "storemesh-ios";
+			path = "StoreMesh";
 			sourceTree = "<group>";
 		};
 		A40D3731304728FF00C51278 /* storemesh-iosTests */ = {

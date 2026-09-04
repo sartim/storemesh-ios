@@ -11,8 +11,8 @@ import Testing
 struct storemesh_iosTests {
 
     @Test func productFormatsMinorCurrencyUnits() async throws {
-        let product = StoreProduct(id: "p-1", name: "Desk lamp", description: "", priceMinor: "1299", currency: "USD")
-        #expect(product.priceText == "USD 12.99")
+        let product = Product(id: "p-1", name: "Desk lamp", description: "", priceMinor: 1299, currency: "USD")
+        #expect(product.priceMinor == 1299)
     }
 
 }

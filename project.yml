@@ -2,7 +2,7 @@ name: StoreMesh
 options:
   minimumXcodeGenVersion: 2.38.0
 targets:
-  StoreMesh:
+  storemesh-ios:
     type: application
     platform: iOS
     deploymentTarget: "17.0"

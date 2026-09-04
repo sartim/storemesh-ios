@@ -63,7 +63,10 @@ final class OIDCAuth: NSObject, ASWebAuthenticationPresentationContextProviding 
             authSession.presentationContextProvider = self
             authSession.prefersEphemeralWebBrowserSession = true
             self.session = authSession
-            guard authSession.start() else { continuation.resume(throwing: OIDCAuthError.unavailable) }
+            guard authSession.start() else {
+                continuation.resume(throwing: OIDCAuthError.unavailable)
+                return
+            }
         }
         guard let code = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false)?.queryItems?.first(where: { $0.name == "code" })?.value else {
             throw OIDCAuthError.invalidCallback
