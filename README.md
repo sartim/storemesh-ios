@@ -44,10 +44,10 @@ iOS app → HTTPS ngrok URL → StoreMesh BFF → internal gRPC services
                                       └→ Order Service (commerce)
 ```
 
-For a physical device, start the local port forwards and expose only the BFF:
+For a physical device, start the BFF as a local process and expose only that
+process when a device cannot reach `localhost` directly:
 
 ```sh
-./scripts/port-forward-local.sh
 ngrok http 8080
 curl https://YOUR-NGROK-DOMAIN.ngrok-free.app/healthz
 ```
@@ -60,8 +60,8 @@ Configure the ngrok origin in Xcode with either a launch argument:
 
 or the `STOREMESH_API_BASE_URL` environment variable. The launch argument has
 priority. Do not include `/api/v1` in the value; the client appends that path.
-The default `localhost` value remains appropriate for an iOS Simulator when
-the BFF is forwarded on the Mac.
+The default `localhost` value remains appropriate for a simulator when the
+BFF is running directly on the development machine.
 
 Keycloak migration uses Apple's `ASWebAuthenticationSession` with the
 `storemesh-ios://oauth/callback` redirect and Authorization Code + PKCE. The
@@ -86,8 +86,9 @@ do not expose internal gRPC, database, Redis, or observability ports.
 The native API client supports authenticated cart and order calls through the
 BFF. The cart model is shared with native checkout work so cart state can be
 synchronized across devices. The catalog now presents a native cart sheet
-with quantity controls and clear-cart support. GraphQL adoption and native
-checkout UI remain the next iOS slice; REST remains available for compatibility.
+with quantity controls and clear-cart support. REST remains available for
+compatibility. Docker and Kind are reserved for infrastructure and deployment
+validation, not routine iOS feature development.
 
 ## Releases
 
