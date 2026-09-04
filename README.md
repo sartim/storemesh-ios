@@ -100,6 +100,7 @@ distribution can be added later through protected GitHub Environment secrets.
 
 The app uses the Go BFF as its only API origin. Catalog and cart reads use the
 authenticated GraphQL endpoint (`/api/v1/graphql`) for API composition; REST
-remains available for feature flags, cart writes, and compatibility operations.
+now also handles cart updates, cart clearing, and idempotent order creation;
+REST remains available for feature flags and compatibility operations.
 GraphQL transport is isolated in `APIClient` so SwiftUI views do not own
 request construction or response parsing.

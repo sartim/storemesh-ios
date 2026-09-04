@@ -9,6 +9,7 @@ struct APIClient: Sendable {
     private struct ProductConnection: Decodable { let products: [Product] }
     private struct ProductData: Decodable { let products: ProductConnection }
     private struct CartData: Decodable { let cart: Cart? }
+    private struct OrderData: Decodable { let createOrder: Order }
 
     private func graphQL<Value: Decodable>(_ query: String, accessToken: String) async throws -> Value {
         var request = URLRequest(url: baseURL.appending(path: "graphql"))
@@ -53,6 +54,23 @@ struct APIClient: Sendable {
     func graphQLCart(accessToken: String) async throws -> Cart {
         let value: CartData = try await graphQL("{ cart { lines { productId quantity } } }", accessToken: accessToken)
         return value.cart ?? Cart(lines: [])
+    }
+
+    func graphQLSaveCart(_ cart: Cart, accessToken: String) async throws -> Cart {
+        let lines = cart.lines.map { "{ productId: \"\($0.productId)\", quantity: \($0.quantity) }" }.joined(separator: ",")
+        let value: CartData = try await graphQL("mutation { updateCart(lines: [\(lines)]) { lines { productId quantity } } }", accessToken: accessToken)
+        return value.cart ?? Cart(lines: [])
+    }
+
+    func graphQLClearCart(accessToken: String) async throws {
+        let _: CartData = try await graphQL("mutation { clearCart { lines { productId quantity } } }", accessToken: accessToken)
+    }
+
+    func graphQLCreateOrder(_ cart: Cart, accessToken: String) async throws -> Order {
+        let lines = cart.lines.map { "{ productId: \"\($0.productId)\", quantity: \($0.quantity) }" }.joined(separator: ",")
+        let key = UUID().uuidString
+        let value: OrderData = try await graphQL("mutation { createOrder(lines: [\(lines)], idempotencyKey: \"\(key)\") { id status totalMinor currency createdAt } }", accessToken: accessToken)
+        return value.createOrder
     }
 
     func cart(accessToken: String) async throws -> Cart {
