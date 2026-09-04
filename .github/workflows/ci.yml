@@ -18,5 +18,7 @@ jobs:
           xcodebuild test
           -project storemesh-ios.xcodeproj
           -scheme storemesh-ios
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=26.2'
+          # Do not pin an SDK runtime: GitHub-hosted macOS images rotate the
+          # installed iOS simulator versions independently of this workflow.
+          -destination 'platform=iOS Simulator,name=iPhone 16'
           CODE_SIGNING_ALLOWED=NO
