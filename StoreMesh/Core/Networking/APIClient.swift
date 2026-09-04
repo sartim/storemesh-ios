@@ -73,6 +73,15 @@ struct APIClient: Sendable {
         return value.createOrder
     }
 
+    func orders(accessToken: String) async throws -> [Order] {
+        var request = URLRequest(url: baseURL.appending(path: "orders"))
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
+        struct OrderResponse: Decodable { let orders: [Order] }
+        return try JSONDecoder().decode(OrderResponse.self, from: data).orders
+    }
+
     func cart(accessToken: String) async throws -> Cart {
         var request = URLRequest(url: baseURL.appending(path: "cart")); request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         let (data, response) = try await URLSession.shared.data(for: request)

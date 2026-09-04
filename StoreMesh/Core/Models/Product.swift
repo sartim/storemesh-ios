@@ -16,7 +16,7 @@ struct CartLine: Codable, Identifiable, Sendable {
 
 struct Cart: Codable, Sendable { var lines: [CartLine] }
 
-struct Order: Codable, Sendable {
+struct Order: Codable, Identifiable, Sendable {
     let id: String
     let status: String
     let totalMinor: Int
