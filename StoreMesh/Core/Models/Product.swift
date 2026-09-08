@@ -2,6 +2,7 @@ import Foundation
 
 struct Product: Codable, Identifiable, Sendable {
     let id: String
+    let sku: String?
     let name: String
     let description: String
     let priceMinor: Int

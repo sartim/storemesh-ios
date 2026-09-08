@@ -47,7 +47,7 @@ struct APIClient: Sendable {
     }
 
     func graphQLProducts(accessToken: String) async throws -> [Product] {
-        let value: ProductData = try await graphQL("{ products(pageSize: 100) { products { id name description priceMinor currency } } }", accessToken: accessToken)
+        let value: ProductData = try await graphQL("{ products(pageSize: 100, status: ACTIVE) { products { id sku name description priceMinor currency } } }", accessToken: accessToken)
         return value.products.products
     }
 
