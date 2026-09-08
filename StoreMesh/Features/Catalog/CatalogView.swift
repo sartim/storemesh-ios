@@ -16,7 +16,7 @@ struct CatalogView: View {
         TabView(selection: $selectedTab) {
             NavigationStack { homeView }.tabItem { Label("Shop", systemImage: "house.fill") }.tag(0)
             NavigationStack { ordersView }.tabItem { Label("Orders", systemImage: "shippingbox") }.tag(1)
-            NavigationStack { CartView(products: products, cart: $cart, onChange: saveCart, onClear: clearCart, onCheckout: { showingCheckout = true }) }.tabItem { Label("Cart", systemImage: "cart.fill") }.tag(2)
+            NavigationStack { CartView(products: products, cart: $cart, onChange: saveCart, onClear: clearCart, onCheckout: { showingCheckout = true }) }.tabItem { Label("Cart", systemImage: "cart.fill") }.badge(cart.lines.reduce(0) { $0 + $1.quantity }).tag(2)
             NavigationStack { profileView }.tabItem { Label("Profile", systemImage: "person.crop.circle") }.tag(3)
         }
         .tint(.storeMeshBlue)

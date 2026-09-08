@@ -55,7 +55,7 @@ struct CartView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Cart")
+            .navigationTitle("Cart (\(cart.lines.reduce(0) { $0 + $1.quantity }))")
             .toolbar { ToolbarItem(placement: .topBarTrailing) { Button("Clear", role: .destructive) { Task { await onClear() } }.disabled(cart.lines.isEmpty) } }
         }
     }
