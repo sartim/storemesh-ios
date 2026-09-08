@@ -14,6 +14,7 @@ struct APIClient: Sendable {
     private struct ProductConnection: Decodable { let products: [Product] }
     private struct ProductData: Decodable { let products: ProductConnection }
     private struct CartData: Decodable { let cart: Cart? }
+    private struct UpdatedCartData: Decodable { let updateCart: Cart? }
     private struct OrderData: Decodable { let createOrder: Order }
 
     func login(email: String, password: String) async throws -> LoginResponse {
@@ -73,8 +74,8 @@ struct APIClient: Sendable {
 
     func graphQLSaveCart(_ cart: Cart, accessToken: String) async throws -> Cart {
         let lines = cart.lines.map { "{ productId: \"\($0.productId)\", quantity: \($0.quantity) }" }.joined(separator: ",")
-        let value: CartData = try await graphQL("mutation { updateCart(lines: [\(lines)]) { lines { productId quantity } } }", accessToken: accessToken)
-        return value.cart ?? Cart(lines: [])
+        let value: UpdatedCartData = try await graphQL("mutation { updateCart(lines: [\(lines)]) { lines { productId quantity } } }", accessToken: accessToken)
+        return value.updateCart ?? Cart(lines: [])
     }
 
     func graphQLClearCart(accessToken: String) async throws {
