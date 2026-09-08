@@ -33,6 +33,11 @@ layout. The client makes all mobile API requests to the BFF; it never calls
 the internal gRPC services directly. The default simulator URL is:
 `http://localhost:8080`.
 
+For a complete native local run, start Product, Inventory, Order, User, and
+BFF as separate processes using their repository READMEs, then run the app
+from Xcode. The simulator connects to the BFF at `http://localhost:8080`; no
+container or Kubernetes networking is needed.
+
 ## Backend and ngrok request flow
 
 The request path for login and subsequent customer requests is:
