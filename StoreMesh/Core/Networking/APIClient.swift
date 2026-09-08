@@ -3,6 +3,11 @@ import Foundation
 struct APIClient: Sendable {
     var baseURL = URL(string: "http://localhost:8080/api/v1")!
 
+    struct LoginResponse: Codable, Sendable {
+        let accessToken: String
+        let refreshToken: String
+    }
+
     private struct GraphQLRequest: Encodable { let query: String }
     private struct GraphQLResponse<Value: Decodable>: Decodable { let data: Value?; let errors: [GraphQLError]? }
     private struct GraphQLError: Decodable { let message: String }
@@ -10,6 +15,16 @@ struct APIClient: Sendable {
     private struct ProductData: Decodable { let products: ProductConnection }
     private struct CartData: Decodable { let cart: Cart? }
     private struct OrderData: Decodable { let createOrder: Order }
+
+    func login(email: String, password: String) async throws -> LoginResponse {
+        var request = URLRequest(url: baseURL.appending(path: "auth/login"))
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(["email": email, "password": password])
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.userAuthenticationRequired) }
+        return try JSONDecoder().decode(LoginResponse.self, from: data)
+    }
 
     private func graphQL<Value: Decodable>(_ query: String, accessToken: String) async throws -> Value {
         var request = URLRequest(url: baseURL.appending(path: "graphql"))
