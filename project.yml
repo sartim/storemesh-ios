@@ -12,5 +12,6 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.storemesh.ios
         SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: StoreMesh
         INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking: YES

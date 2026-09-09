@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07E1752648D250F1C4F6C0F7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D26BAF52D57EF30CD3CC /* Product.swift */; };
+		09A5648F3BA689FAE943712E /* StoreMeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF8BC3A2F69A97F3909FA81 /* StoreMeshApp.swift */; };
+		0F2555B568C2D5B233FCD9C9 /* OIDCAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216196DF4F9967FA38DB72DB /* OIDCAuth.swift */; };
+		1E51F0227FD0F5A939837118 /* KeychainTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689EE87ADFAEF456017785E4 /* KeychainTokenStore.swift */; };
+		229B3C9D11888D8300F51B9C /* cove-ceramic-mug.png in Resources */ = {isa = PBXBuildFile; fileRef = AD949CCE1DF9FF5F5CEAB656 /* cove-ceramic-mug.png */; };
+		2ABFCC45C09EBF7FDD3749AA /* rain-travel-umbrella.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B75C375F36152589AE00456 /* rain-travel-umbrella.png */; };
+		2F7EEAEE42E842C616D315ED /* cloud-wool-throw.png in Resources */ = {isa = PBXBuildFile; fileRef = FAED1CBC618E6B12868E3BD4 /* cloud-wool-throw.png */; };
+		2FAB9F8027F6A4DBE81AFFAC /* moss-plant-pot.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CF91D2ACA3C339B6D92AD5A /* moss-plant-pot.png */; };
+		3085719D72F48FA8FCD751B5 /* ridge-headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 071AD6C780A42391A03FE16B /* ridge-headphones.png */; };
+		318BDA212367D60ED1299F08 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67802A993C94C261CCC65A52 /* CartView.swift */; };
+		53E617EC982D4BE7E28D56A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C212E8D451CC53A83C5042 /* LoginView.swift */; };
+		555198637DFF6141E67FCB69 /* north-ceramic-vase.png in Resources */ = {isa = PBXBuildFile; fileRef = B38F6794237A2BA6F1A73136 /* north-ceramic-vase.png */; };
+		58B067B0E63B1268D31998E2 /* hearth-candle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5DF2B0BC1633C4C5D6D7C /* hearth-candle.png */; };
+		7135C607DF181E91224A04BF /* common-leather-wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B74819EA0BCD630C841CC4 /* common-leather-wallet.png */; };
+		7572434E0B4361587F537DAA /* woven-storage-basket.png in Resources */ = {isa = PBXBuildFile; fileRef = 98D4D967CDA61D6DDE429624 /* woven-storage-basket.png */; };
+		846BF47855DF8C3008702038 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C74C86E67AC8961D9028AF /* FeatureFlags.swift */; };
+		99BD3E5E7727EC27F3424C32 /* studio-backpack.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C593100F481845CECE2FDF /* studio-backpack.png */; };
+		C0E228B1E0A4AFFFE26EC63D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BDA44C380A1651A87D9ABE /* APIClient.swift */; };
+		C1E521FA2D79713A1498AD60 /* canvas-market-tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 835059D07C180047394BFB32 /* canvas-market-tote.png */; };
+		E401C660A1FADBCA0BD3B7E5 /* mono-usb-c-hub.png in Resources */ = {isa = PBXBuildFile; fileRef = 78ADE34069E18A0F9B5DA37F /* mono-usb-c-hub.png */; };
+		E792828D4911A3B3BEA3CEBD /* arc-wireless-charger.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E7FB3E4E5E321CC558C1E9 /* arc-wireless-charger.png */; };
+		EF0A05D16B5A29850B6EEB47 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0439170D5CF759F6CE03A /* CatalogView.swift */; };
+		F85C31A0E8F137637D0A09DA /* orbit-mechanical-keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 004726F6EC52BDAFE85BB096 /* orbit-mechanical-keyboard.png */; };
+		F8F8D67268610FA5C111840A /* lumen-portable-speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E114223492A874E0A73310D /* lumen-portable-speaker.png */; };
+		FDC1E993F6D7088E1126609D /* halo-desk-lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAECEB55A89AE27412F92DF /* halo-desk-lamp.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		004726F6EC52BDAFE85BB096 /* orbit-mechanical-keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orbit-mechanical-keyboard.png"; sourceTree = "<group>"; };
+		06BDA44C380A1651A87D9ABE /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		071AD6C780A42391A03FE16B /* ridge-headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ridge-headphones.png"; sourceTree = "<group>"; };
+		216196DF4F9967FA38DB72DB /* OIDCAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIDCAuth.swift; sourceTree = "<group>"; };
+		25B74819EA0BCD630C841CC4 /* common-leather-wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common-leather-wallet.png"; sourceTree = "<group>"; };
+		27B0439170D5CF759F6CE03A /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		2DF5DF2B0BC1633C4C5D6D7C /* hearth-candle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hearth-candle.png"; sourceTree = "<group>"; };
+		3E114223492A874E0A73310D /* lumen-portable-speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lumen-portable-speaker.png"; sourceTree = "<group>"; };
+		50444BC5515DDF1FD7BE93B2 /* storemesh-ios.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "storemesh-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67802A993C94C261CCC65A52 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		689EE87ADFAEF456017785E4 /* KeychainTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenStore.swift; sourceTree = "<group>"; };
+		69C593100F481845CECE2FDF /* studio-backpack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "studio-backpack.png"; sourceTree = "<group>"; };
+		6B75C375F36152589AE00456 /* rain-travel-umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain-travel-umbrella.png"; sourceTree = "<group>"; };
+		78ADE34069E18A0F9B5DA37F /* mono-usb-c-hub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-usb-c-hub.png"; sourceTree = "<group>"; };
+		78E7FB3E4E5E321CC558C1E9 /* arc-wireless-charger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arc-wireless-charger.png"; sourceTree = "<group>"; };
+		835059D07C180047394BFB32 /* canvas-market-tote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "canvas-market-tote.png"; sourceTree = "<group>"; };
+		8CF91D2ACA3C339B6D92AD5A /* moss-plant-pot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moss-plant-pot.png"; sourceTree = "<group>"; };
+		98D4D967CDA61D6DDE429624 /* woven-storage-basket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woven-storage-basket.png"; sourceTree = "<group>"; };
+		99C212E8D451CC53A83C5042 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		99C74C86E67AC8961D9028AF /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
+		9AAECEB55A89AE27412F92DF /* halo-desk-lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halo-desk-lamp.png"; sourceTree = "<group>"; };
+		AD949CCE1DF9FF5F5CEAB656 /* cove-ceramic-mug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cove-ceramic-mug.png"; sourceTree = "<group>"; };
+		AFF8BC3A2F69A97F3909FA81 /* StoreMeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMeshApp.swift; sourceTree = "<group>"; };
+		B38F6794237A2BA6F1A73136 /* north-ceramic-vase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "north-ceramic-vase.png"; sourceTree = "<group>"; };
+		D375D26BAF52D57EF30CD3CC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		FAED1CBC618E6B12868E3BD4 /* cloud-wool-throw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-wool-throw.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		25C2144666EF11558C6B341E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				2A8F23BFA311F70DF8FB5F3E /* Auth */,
+				75C38D02762EEE2F95E7A6DC /* Catalog */,
+				C494DA1753FD54FCA0844200 /* Checkout */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		2A8F23BFA311F70DF8FB5F3E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				689EE87ADFAEF456017785E4 /* KeychainTokenStore.swift */,
+				99C212E8D451CC53A83C5042 /* LoginView.swift */,
+				216196DF4F9967FA38DB72DB /* OIDCAuth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		30EC8F22F9B12CFD02B6E06B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				06BDA44C380A1651A87D9ABE /* APIClient.swift */,
+				99C74C86E67AC8961D9028AF /* FeatureFlags.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4B156F3D3E9E53790581951D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50444BC5515DDF1FD7BE93B2 /* storemesh-ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E972D0B84DF7B7F603DEFE3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EE39D585FB31039E657EE31B /* Models */,
+				30EC8F22F9B12CFD02B6E06B /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		51E30FEC49506CE48DF1A496 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				78E7FB3E4E5E321CC558C1E9 /* arc-wireless-charger.png */,
+				835059D07C180047394BFB32 /* canvas-market-tote.png */,
+				FAED1CBC618E6B12868E3BD4 /* cloud-wool-throw.png */,
+				25B74819EA0BCD630C841CC4 /* common-leather-wallet.png */,
+				AD949CCE1DF9FF5F5CEAB656 /* cove-ceramic-mug.png */,
+				9AAECEB55A89AE27412F92DF /* halo-desk-lamp.png */,
+				2DF5DF2B0BC1633C4C5D6D7C /* hearth-candle.png */,
+				3E114223492A874E0A73310D /* lumen-portable-speaker.png */,
+				78ADE34069E18A0F9B5DA37F /* mono-usb-c-hub.png */,
+				8CF91D2ACA3C339B6D92AD5A /* moss-plant-pot.png */,
+				B38F6794237A2BA6F1A73136 /* north-ceramic-vase.png */,
+				004726F6EC52BDAFE85BB096 /* orbit-mechanical-keyboard.png */,
+				6B75C375F36152589AE00456 /* rain-travel-umbrella.png */,
+				071AD6C780A42391A03FE16B /* ridge-headphones.png */,
+				69C593100F481845CECE2FDF /* studio-backpack.png */,
+				98D4D967CDA61D6DDE429624 /* woven-storage-basket.png */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		5F4946AEBB2600341C90418B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51E30FEC49506CE48DF1A496 /* Catalog */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6A1BF5A6ED2575E596B83866 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AFF8BC3A2F69A97F3909FA81 /* StoreMeshApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		75C38D02762EEE2F95E7A6DC /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				27B0439170D5CF759F6CE03A /* CatalogView.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		C494DA1753FD54FCA0844200 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				67802A993C94C261CCC65A52 /* CartView.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		EE39D585FB31039E657EE31B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D375D26BAF52D57EF30CD3CC /* Product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FE31A6ABF4A3C153311E48EC /* StoreMesh */ = {
+			isa = PBXGroup;
+			children = (
+				6A1BF5A6ED2575E596B83866 /* App */,
+				4E972D0B84DF7B7F603DEFE3 /* Core */,
+				25C2144666EF11558C6B341E /* Features */,
+				5F4946AEBB2600341C90418B /* Resources */,
+			);
+			path = StoreMesh;
+			sourceTree = "<group>";
+		};
+		FFF69165A64FBD7B288507E1 = {
+			isa = PBXGroup;
+			children = (
+				FE31A6ABF4A3C153311E48EC /* StoreMesh */,
+				4B156F3D3E9E53790581951D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F598D78C6D41380B3286A4A /* Build configuration list for PBXNativeTarget "storemesh-ios" */;
+			buildPhases = (
+				673E6C4EF3815E0E249B7F6E /* Sources */,
+				F357F42B490E43085E1F2901 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "storemesh-ios";
+			packageProductDependencies = (
+			);
+			productName = "storemesh-ios";
+			productReference = 50444BC5515DDF1FD7BE93B2 /* storemesh-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A2EE67A073E9EA60D21B373 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = F11026B3A3966FA41FD6898B /* Build configuration list for PBXProject "StoreMesh" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FFF69165A64FBD7B288507E1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4B156F3D3E9E53790581951D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F357F42B490E43085E1F2901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E792828D4911A3B3BEA3CEBD /* arc-wireless-charger.png in Resources */,
+				C1E521FA2D79713A1498AD60 /* canvas-market-tote.png in Resources */,
+				2F7EEAEE42E842C616D315ED /* cloud-wool-throw.png in Resources */,
+				7135C607DF181E91224A04BF /* common-leather-wallet.png in Resources */,
+				229B3C9D11888D8300F51B9C /* cove-ceramic-mug.png in Resources */,
+				FDC1E993F6D7088E1126609D /* halo-desk-lamp.png in Resources */,
+				58B067B0E63B1268D31998E2 /* hearth-candle.png in Resources */,
+				F8F8D67268610FA5C111840A /* lumen-portable-speaker.png in Resources */,
+				E401C660A1FADBCA0BD3B7E5 /* mono-usb-c-hub.png in Resources */,
+				2FAB9F8027F6A4DBE81AFFAC /* moss-plant-pot.png in Resources */,
+				555198637DFF6141E67FCB69 /* north-ceramic-vase.png in Resources */,
+				F85C31A0E8F137637D0A09DA /* orbit-mechanical-keyboard.png in Resources */,
+				2ABFCC45C09EBF7FDD3749AA /* rain-travel-umbrella.png in Resources */,
+				3085719D72F48FA8FCD751B5 /* ridge-headphones.png in Resources */,
+				99BD3E5E7727EC27F3424C32 /* studio-backpack.png in Resources */,
+				7572434E0B4361587F537DAA /* woven-storage-basket.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		673E6C4EF3815E0E249B7F6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E228B1E0A4AFFFE26EC63D /* APIClient.swift in Sources */,
+				318BDA212367D60ED1299F08 /* CartView.swift in Sources */,
+				EF0A05D16B5A29850B6EEB47 /* CatalogView.swift in Sources */,
+				846BF47855DF8C3008702038 /* FeatureFlags.swift in Sources */,
+				1E51F0227FD0F5A939837118 /* KeychainTokenStore.swift in Sources */,
+				53E617EC982D4BE7E28D56A2 /* LoginView.swift in Sources */,
+				0F2555B568C2D5B233FCD9C9 /* OIDCAuth.swift in Sources */,
+				07E1752648D250F1C4F6C0F7 /* Product.swift in Sources */,
+				09A5648F3BA689FAE943712E /* StoreMeshApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0498567252B5E8558F507087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		41100BBD0715FFB7D51EFA61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StoreMesh;
+				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		498B0A5D2CDA71EE43A5E4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StoreMesh;
+				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		741C1233A12F3DF2C86EC964 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F598D78C6D41380B3286A4A /* Build configuration list for PBXNativeTarget "storemesh-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				498B0A5D2CDA71EE43A5E4BC /* Debug */,
+				41100BBD0715FFB7D51EFA61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F11026B3A3966FA41FD6898B /* Build configuration list for PBXProject "StoreMesh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				741C1233A12F3DF2C86EC964 /* Debug */,
+				0498567252B5E8558F507087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A2EE67A073E9EA60D21B373 /* Project object */;
+}
