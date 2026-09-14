@@ -2,6 +2,12 @@ import Foundation
 
 struct APIClient: Sendable {
     var baseURL = URL(string: "http://localhost:8080/api/v1")!
+    private let session: URLSession
+
+    init(baseURL: URL = URL(string: "http://localhost:8080/api/v1")!, session: URLSession = .shared) {
+        self.baseURL = baseURL
+        self.session = session
+    }
 
     struct LoginResponse: Codable, Sendable {
         let accessToken: String
@@ -22,7 +28,7 @@ struct APIClient: Sendable {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(["email": email, "password": password])
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.userAuthenticationRequired) }
         return try JSONDecoder().decode(LoginResponse.self, from: data)
     }
@@ -33,7 +39,7 @@ struct APIClient: Sendable {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.httpBody = try JSONEncoder().encode(GraphQLRequest(query: query))
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
         let decoded = try JSONDecoder().decode(GraphQLResponse<Value>.self, from: data)
         if let error = decoded.errors?.first { throw NSError(domain: "StoreMesh.GraphQL", code: 1, userInfo: [NSLocalizedDescriptionKey: error.message]) }
@@ -45,7 +51,7 @@ struct APIClient: Sendable {
         do {
             var request = URLRequest(url: baseURL.appending(path: "config"))
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request)
             guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { return .defaults }
             return try JSONDecoder().decode(FeatureFlags.self, from: data)
         } catch { return .defaults }
@@ -54,7 +60,7 @@ struct APIClient: Sendable {
     func products(accessToken: String? = nil) async throws -> [Product] {
         var request = URLRequest(url: baseURL.appending(path: "products"))
         if let accessToken { request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization") }
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else {
             throw URLError(.badServerResponse)
         }
@@ -92,7 +98,7 @@ struct APIClient: Sendable {
     func orders(accessToken: String) async throws -> [Order] {
         var request = URLRequest(url: baseURL.appending(path: "orders"))
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
         struct OrderResponse: Decodable { let orders: [Order] }
         return try JSONDecoder().decode(OrderResponse.self, from: data).orders
@@ -100,21 +106,21 @@ struct APIClient: Sendable {
 
     func cart(accessToken: String) async throws -> Cart {
         var request = URLRequest(url: baseURL.appending(path: "cart")); request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
         return try JSONDecoder().decode(Cart.self, from: data)
     }
 
     func saveCart(_ cart: Cart, accessToken: String) async throws -> Cart {
         var request = URLRequest(url: baseURL.appending(path: "cart")); request.httpMethod = "PUT"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization"); request.httpBody = try JSONEncoder().encode(cart)
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
         return try JSONDecoder().decode(Cart.self, from: data)
     }
 
     func clearCart(accessToken: String) async throws {
         var request = URLRequest(url: baseURL.appending(path: "cart")); request.httpMethod = "DELETE"; request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        let (_, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else { throw URLError(.badServerResponse) }
     }
 }
