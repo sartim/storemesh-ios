@@ -14,12 +14,12 @@ struct LoginView: View {
             Text("Welcome back").font(.largeTitle.bold())
             Text("Sign in to continue shopping").foregroundStyle(.secondary)
             if let errorMessage { Text(errorMessage).font(.footnote).foregroundStyle(.red).multilineTextAlignment(.center) }
-            TextField("Email or phone number", text: $email).textFieldStyle(.roundedBorder).textContentType(.username).textInputAutocapitalization(.never).autocorrectionDisabled()
-            SecureField("Password", text: $password).textFieldStyle(.roundedBorder).textContentType(.password)
+            TextField("Email or phone number", text: $email).textFieldStyle(.roundedBorder).textContentType(.username).textInputAutocapitalization(.never).autocorrectionDisabled().accessibilityIdentifier("login.email")
+            SecureField("Password", text: $password).textFieldStyle(.roundedBorder).textContentType(.password).accessibilityIdentifier("login.password")
             HStack { Spacer(); Button("Forgot password?") {}.font(.caption).foregroundStyle(Color.storeMeshBlue) }
             Button { signInWithBFF() } label: {
                 Text(isLoading ? "Signing in…" : "Log in").frame(maxWidth: .infinity)
-            }.buttonStyle(.borderedProminent).disabled(isLoading)
+            }.buttonStyle(.borderedProminent).disabled(isLoading).accessibilityIdentifier("login.submit")
             Text("Local development signs in through the StoreMesh BFF. OIDC and PKCE are enabled when a Keycloak environment is configured.").font(.caption).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .center).multilineTextAlignment(.center)
         }
         .padding(28)

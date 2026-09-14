@@ -23,12 +23,14 @@ final class storemesh_iosUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testLoginEntryPointIsUsable() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(app.staticTexts["Welcome back"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.textFields["login.email"].exists)
+        XCTAssertTrue(app.secureTextFields["login.password"].exists)
+        XCTAssertTrue(app.buttons["login.submit"].exists)
     }
 
     @MainActor

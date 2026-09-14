@@ -114,3 +114,12 @@ request construction or response parsing.
 The iOS CI workflow runs the unit and UI launch tests on a hosted iPhone
 Simulator. Network-backed login and checkout scenarios remain a separate
 environment test because they require a reachable BFF and Keycloak issuer.
+
+The UI suite includes a deterministic login-entry check for the welcome text,
+email field, password field, and submit action. It does not require a running
+BFF, database, Docker, or Kubernetes cluster. Run tests locally with:
+
+```sh
+xcodebuild test -project StoreMesh.xcodeproj -scheme storemesh-ios \
+  -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
+```
