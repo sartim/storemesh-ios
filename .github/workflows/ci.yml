@@ -30,7 +30,7 @@ jobs:
       - name: Run unit and UI tests
         run: >-
           xcodebuild test
-          -project storemesh-ios.xcodeproj
+          -project StoreMesh.xcodeproj
           -scheme storemesh-ios
           -destination 'platform=iOS Simulator,name=iPhone 16'
           -parallel-testing-enabled NO
