@@ -10,18 +10,21 @@ import Testing
 @testable import storemesh_ios
 
 private final class MockBFFURLProtocol: URLProtocol {
+    nonisolated(unsafe) static var responseIndex = 0
+
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
-        let body = request.httpBody.flatMap { String(data: $0, encoding: .utf8) } ?? ""
         let payload: String
-        if body.contains("products") {
+        switch Self.responseIndex {
+        case 0:
             payload = "{\"data\":{\"products\":{\"products\":[{\"id\":\"p-1\",\"sku\":\"SM-LAMP-001\",\"name\":\"Halo desk lamp\",\"description\":\"Warm light\",\"priceMinor\":1299,\"currency\":\"USD\"}]}}}"
-        } else if body.contains("createOrder") {
+        case 2:
             payload = "{\"data\":{\"createOrder\":{\"id\":\"o-1\",\"status\":\"PENDING\",\"totalMinor\":1299,\"currency\":\"USD\",\"createdAt\":\"2026-09-14T00:00:00Z\"}}}"
-        } else {
+        default:
             payload = "{\"data\":{\"cart\":{\"lines\":[{\"productId\":\"p-1\",\"quantity\":1}]}}}"
         }
+        Self.responseIndex += 1
         let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: ["Content-Type": "application/json"])!
         client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         client?.urlProtocol(self, didLoad: Data(payload.utf8))
@@ -51,6 +54,7 @@ struct storemesh_iosTests {
     }
 
     @Test func apiClientDecodesCatalogCartAndOrderThroughBFF() async throws {
+        MockBFFURLProtocol.responseIndex = 0
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockBFFURLProtocol.self]
         let client = APIClient(baseURL: URL(string: "https://bff.test/api/v1")!, session: URLSession(configuration: configuration))
