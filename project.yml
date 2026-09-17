@@ -15,3 +15,38 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: StoreMesh
         INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsLocalNetworking: YES
+  storemesh-iosTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: storemesh-iosTests
+    dependencies:
+      - target: storemesh-ios
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.storemesh.ios.tests
+        SWIFT_VERSION: "6.0"
+  storemesh-iosUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: storemesh-iosUITests
+    dependencies:
+      - target: storemesh-ios
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.storemesh.ios.uitests
+        SWIFT_VERSION: "6.0"
+schemes:
+  storemesh-ios:
+    build:
+      targets:
+        storemesh-ios: all
+        storemesh-iosTests: [test]
+        storemesh-iosUITests: [test]
+    test:
+      targets:
+        - name: storemesh-iosTests
+        - name: storemesh-iosUITests

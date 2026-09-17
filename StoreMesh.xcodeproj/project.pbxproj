@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07E1752648D250F1C4F6C0F7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375D26BAF52D57EF30CD3CC /* Product.swift */; };
+		0960D8D3499AE6ECE3B12A64 /* storemesh_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F685692A24514FA36F78F /* storemesh_iosUITestsLaunchTests.swift */; };
 		09A5648F3BA689FAE943712E /* StoreMeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF8BC3A2F69A97F3909FA81 /* StoreMeshApp.swift */; };
 		0F2555B568C2D5B233FCD9C9 /* OIDCAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216196DF4F9967FA38DB72DB /* OIDCAuth.swift */; };
 		1E51F0227FD0F5A939837118 /* KeychainTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689EE87ADFAEF456017785E4 /* KeychainTokenStore.swift */; };
@@ -24,8 +25,10 @@
 		7572434E0B4361587F537DAA /* woven-storage-basket.png in Resources */ = {isa = PBXBuildFile; fileRef = 98D4D967CDA61D6DDE429624 /* woven-storage-basket.png */; };
 		846BF47855DF8C3008702038 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C74C86E67AC8961D9028AF /* FeatureFlags.swift */; };
 		99BD3E5E7727EC27F3424C32 /* studio-backpack.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C593100F481845CECE2FDF /* studio-backpack.png */; };
+		BCE396D8CD2624F6F96569D4 /* storemesh_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4DDB6177CCB5EEEFFE5F6 /* storemesh_iosTests.swift */; };
 		C0E228B1E0A4AFFFE26EC63D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BDA44C380A1651A87D9ABE /* APIClient.swift */; };
 		C1E521FA2D79713A1498AD60 /* canvas-market-tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 835059D07C180047394BFB32 /* canvas-market-tote.png */; };
+		C9F4664A74FB733DDE33C0D7 /* storemesh_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA013ADDDF35F1CCB1A452FC /* storemesh_iosUITests.swift */; };
 		E401C660A1FADBCA0BD3B7E5 /* mono-usb-c-hub.png in Resources */ = {isa = PBXBuildFile; fileRef = 78ADE34069E18A0F9B5DA37F /* mono-usb-c-hub.png */; };
 		E792828D4911A3B3BEA3CEBD /* arc-wireless-charger.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E7FB3E4E5E321CC558C1E9 /* arc-wireless-charger.png */; };
 		EF0A05D16B5A29850B6EEB47 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0439170D5CF759F6CE03A /* CatalogView.swift */; };
@@ -33,6 +36,23 @@
 		F8F8D67268610FA5C111840A /* lumen-portable-speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E114223492A874E0A73310D /* lumen-portable-speaker.png */; };
 		FDC1E993F6D7088E1126609D /* halo-desk-lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAECEB55A89AE27412F92DF /* halo-desk-lamp.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DDE763A9C777E542FCA3F45A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A2EE67A073E9EA60D21B373 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7F5D9EF1FBC9C64A0087C85;
+			remoteInfo = "storemesh-ios";
+		};
+		F7673971D575E8D453BFD919 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A2EE67A073E9EA60D21B373 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7F5D9EF1FBC9C64A0087C85;
+			remoteInfo = "storemesh-ios";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		004726F6EC52BDAFE85BB096 /* orbit-mechanical-keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orbit-mechanical-keyboard.png"; sourceTree = "<group>"; };
@@ -44,7 +64,9 @@
 		2DF5DF2B0BC1633C4C5D6D7C /* hearth-candle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hearth-candle.png"; sourceTree = "<group>"; };
 		3E114223492A874E0A73310D /* lumen-portable-speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lumen-portable-speaker.png"; sourceTree = "<group>"; };
 		50444BC5515DDF1FD7BE93B2 /* storemesh-ios.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "storemesh-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E4DDB6177CCB5EEEFFE5F6 /* storemesh_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storemesh_iosTests.swift; sourceTree = "<group>"; };
 		67802A993C94C261CCC65A52 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		6826BDC882ADD7C7E41E2636 /* storemesh-iosTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "storemesh-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		689EE87ADFAEF456017785E4 /* KeychainTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenStore.swift; sourceTree = "<group>"; };
 		69C593100F481845CECE2FDF /* studio-backpack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "studio-backpack.png"; sourceTree = "<group>"; };
 		6B75C375F36152589AE00456 /* rain-travel-umbrella.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain-travel-umbrella.png"; sourceTree = "<group>"; };
@@ -57,13 +79,25 @@
 		99C74C86E67AC8961D9028AF /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		9AAECEB55A89AE27412F92DF /* halo-desk-lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halo-desk-lamp.png"; sourceTree = "<group>"; };
 		AD949CCE1DF9FF5F5CEAB656 /* cove-ceramic-mug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cove-ceramic-mug.png"; sourceTree = "<group>"; };
+		AE4F685692A24514FA36F78F /* storemesh_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storemesh_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AFF8BC3A2F69A97F3909FA81 /* StoreMeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMeshApp.swift; sourceTree = "<group>"; };
 		B38F6794237A2BA6F1A73136 /* north-ceramic-vase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "north-ceramic-vase.png"; sourceTree = "<group>"; };
+		B6AA85CCE3381DBD27682B3E /* storemesh-iosUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "storemesh-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D375D26BAF52D57EF30CD3CC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		EA013ADDDF35F1CCB1A452FC /* storemesh_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storemesh_iosUITests.swift; sourceTree = "<group>"; };
 		FAED1CBC618E6B12868E3BD4 /* cloud-wool-throw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud-wool-throw.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		00D54B94E3D8E1D9B452A088 /* storemesh-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA013ADDDF35F1CCB1A452FC /* storemesh_iosUITests.swift */,
+				AE4F685692A24514FA36F78F /* storemesh_iosUITestsLaunchTests.swift */,
+			);
+			path = "storemesh-iosUITests";
+			sourceTree = "<group>";
+		};
 		25C2144666EF11558C6B341E /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +127,20 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		398C513D52000BB3BA74E3A7 /* storemesh-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				53E4DDB6177CCB5EEEFFE5F6 /* storemesh_iosTests.swift */,
+			);
+			path = "storemesh-iosTests";
+			sourceTree = "<group>";
+		};
 		4B156F3D3E9E53790581951D /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				50444BC5515DDF1FD7BE93B2 /* storemesh-ios.app */,
+				6826BDC882ADD7C7E41E2636 /* storemesh-iosTests.xctest */,
+				B6AA85CCE3381DBD27682B3E /* storemesh-iosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				FE31A6ABF4A3C153311E48EC /* StoreMesh */,
+				398C513D52000BB3BA74E3A7 /* storemesh-iosTests */,
+				00D54B94E3D8E1D9B452A088 /* storemesh-iosUITests */,
 				4B156F3D3E9E53790581951D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -195,6 +241,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A904580A528967600D031835 /* storemesh-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5ACB9B41842D741270F1CE0 /* Build configuration list for PBXNativeTarget "storemesh-iosTests" */;
+			buildPhases = (
+				8C5003C8EEE168423B23652D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				376E5B125140AA98B6B874AE /* PBXTargetDependency */,
+			);
+			name = "storemesh-iosTests";
+			packageProductDependencies = (
+			);
+			productName = "storemesh-iosTests";
+			productReference = 6826BDC882ADD7C7E41E2636 /* storemesh-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CABA6BE5304689B5A84BF6F7 /* storemesh-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89F3400DDD0A8FABC443EA2F /* Build configuration list for PBXNativeTarget "storemesh-iosUITests" */;
+			buildPhases = (
+				7875BA2739AFC73862EF7F83 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D23228BB31FE5B3C069D760 /* PBXTargetDependency */,
+			);
+			name = "storemesh-iosUITests";
+			packageProductDependencies = (
+			);
+			productName = "storemesh-iosUITests";
+			productReference = B6AA85CCE3381DBD27682B3E /* storemesh-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F598D78C6D41380B3286A4A /* Build configuration list for PBXNativeTarget "storemesh-ios" */;
@@ -222,6 +304,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					CABA6BE5304689B5A84BF6F7 = {
+						TestTargetID = E7F5D9EF1FBC9C64A0087C85;
+					};
 				};
 			};
 			buildConfigurationList = F11026B3A3966FA41FD6898B /* Build configuration list for PBXProject "StoreMesh" */;
@@ -239,6 +324,8 @@
 			projectRoot = "";
 			targets = (
 				E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */,
+				A904580A528967600D031835 /* storemesh-iosTests */,
+				CABA6BE5304689B5A84BF6F7 /* storemesh-iosUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,9 +373,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7875BA2739AFC73862EF7F83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F4664A74FB733DDE33C0D7 /* storemesh_iosUITests.swift in Sources */,
+				0960D8D3499AE6ECE3B12A64 /* storemesh_iosUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C5003C8EEE168423B23652D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCE396D8CD2624F6F96569D4 /* storemesh_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		376E5B125140AA98B6B874AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */;
+			targetProxy = F7673971D575E8D453BFD919 /* PBXContainerItemProxy */;
+		};
+		9D23228BB31FE5B3C069D760 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7F5D9EF1FBC9C64A0087C85 /* storemesh-ios */;
+			targetProxy = DDE763A9C777E542FCA3F45A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		021AFF1F290F54589DF91FAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/storemesh-ios.app/storemesh-ios";
+			};
+			name = Release;
+		};
 		0498567252B5E8558F507087 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -341,6 +476,42 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		229B92CD51BE04E33CC2927E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/storemesh-ios.app/storemesh-ios";
+			};
+			name = Debug;
+		};
+		401FFDC3A069CEA16481D98D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "storemesh-ios";
 			};
 			name = Release;
 		};
@@ -446,6 +617,24 @@
 			};
 			name = Debug;
 		};
+		A79104BB63740C23B254BE5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.storemesh.ios.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "storemesh-ios";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -454,6 +643,24 @@
 			buildConfigurations = (
 				498B0A5D2CDA71EE43A5E4BC /* Debug */,
 				41100BBD0715FFB7D51EFA61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		89F3400DDD0A8FABC443EA2F /* Build configuration list for PBXNativeTarget "storemesh-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A79104BB63740C23B254BE5D /* Debug */,
+				401FFDC3A069CEA16481D98D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B5ACB9B41842D741270F1CE0 /* Build configuration list for PBXNativeTarget "storemesh-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				229B92CD51BE04E33CC2927E /* Debug */,
+				021AFF1F290F54589DF91FAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

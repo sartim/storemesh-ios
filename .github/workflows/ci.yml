@@ -28,10 +28,13 @@ jobs:
           done
           exit 1
       - name: Run unit and UI tests
-        run: >-
-          xcodebuild test
-          -project StoreMesh.xcodeproj
-          -scheme storemesh-ios
-          -destination 'platform=iOS Simulator,name=iPhone 16'
-          -parallel-testing-enabled NO
-          CODE_SIGNING_ALLOWED=NO
+        run: |
+          set -euo pipefail
+          device_id="$(xcrun simctl list devices available | awk -F '[()]' '/iPhone/{print $2; exit}')"
+          test -n "$device_id"
+          xcodebuild test \
+            -project StoreMesh.xcodeproj \
+            -scheme storemesh-ios \
+            -destination "id=$device_id" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO
