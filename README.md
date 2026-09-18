@@ -115,6 +115,10 @@ The iOS CI workflow runs the unit and UI launch tests on a hosted iPhone
 Simulator. Network-backed login and checkout scenarios remain a separate
 environment test because they require a reachable BFF and Keycloak issuer.
 
+Canonical v1 BFF response shapes are copied under
+`storemesh-iosTests/Fixtures/bff/v1/`. Keep these golden fixtures aligned with
+`storemesh-bff/api/graphql/fixtures/v1/` when the GraphQL schema changes.
+
 The UI suite includes a deterministic login-entry check for the welcome text,
 email field, password field, and submit action. It does not require a running
 BFF, database, Docker, or Kubernetes cluster. Run tests locally with:
