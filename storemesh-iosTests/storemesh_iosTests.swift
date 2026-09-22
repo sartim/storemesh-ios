@@ -67,4 +67,23 @@ struct storemesh_iosTests {
         #expect(order.id == "o-1")
     }
 
+    @Test func liveBffCommerceFlowWhenConfigured() async throws {
+        guard let bffURL = ProcessInfo.processInfo.environment["STOREMESH_BFF_URL"],
+              let accessToken = ProcessInfo.processInfo.environment["STOREMESH_ACCESS_TOKEN"],
+              !bffURL.isEmpty, !accessToken.isEmpty else { return }
+
+        let base = URL(string: bffURL.trimmingCharacters(in: CharacterSet(charactersIn: "/")) + "/api/v1")!
+        let client = APIClient(baseURL: base)
+        let product = try await client.graphQLProducts(accessToken: accessToken).first
+        #expect(product != nil)
+        guard let product else { return }
+        let saved = try await client.graphQLSaveCart(Cart(lines: [CartLine(productId: product.id, quantity: 1)]), accessToken: accessToken)
+        #expect(saved.lines.first?.productId == product.id)
+        let order = try await client.graphQLCreateOrder(saved, accessToken: accessToken)
+        #expect(!order.id.isEmpty)
+        try await client.graphQLClearCart(accessToken: accessToken)
+        let cleared = try await client.graphQLCart(accessToken: accessToken)
+        #expect(cleared.lines.isEmpty)
+    }
+
 }

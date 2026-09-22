@@ -127,3 +127,20 @@ BFF, database, Docker, or Kubernetes cluster. Run tests locally with:
 xcodebuild test -project StoreMesh.xcodeproj -scheme storemesh-ios \
   -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
 ```
+
+For an opt-in network-backed commerce check against independently running
+services, provide a BFF root URL and a valid Keycloak access token to the
+simulator test process:
+
+```sh
+STOREMESH_BFF_URL='http://localhost:8080' \
+STOREMESH_ACCESS_TOKEN='...' \
+xcodebuild test -project StoreMesh.xcodeproj -scheme storemesh-ios \
+  -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+  CODE_SIGNING_ALLOWED=NO
+```
+
+The live test reads a product, saves one cart line, creates an idempotent
+order, and clears the cart. It is skipped when either variable is unset and
+must use development data only. Physical-device testing should use the HTTPS
+ngrok BFF origin.
