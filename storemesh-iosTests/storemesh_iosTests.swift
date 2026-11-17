@@ -11,10 +11,14 @@ import Testing
 
 private final class MockBFFURLProtocol: URLProtocol {
     nonisolated(unsafe) static var responseIndex = 0
+    nonisolated(unsafe) static var lastRequestBody = ""
 
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
+        if let body = request.httpBody, let bodyText = String(data: body, encoding: .utf8) {
+            Self.lastRequestBody = bodyText
+        }
         let payload: String
         switch Self.responseIndex {
         case 0:
@@ -55,6 +59,7 @@ struct storemesh_iosTests {
 
     @Test func apiClientDecodesCatalogCartAndOrderThroughBFF() async throws {
         MockBFFURLProtocol.responseIndex = 0
+        MockBFFURLProtocol.lastRequestBody = ""
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockBFFURLProtocol.self]
         let client = APIClient(baseURL: URL(string: "https://bff.test/api/v1")!, session: URLSession(configuration: configuration))
@@ -65,6 +70,7 @@ struct storemesh_iosTests {
         #expect(cart.lines.first?.quantity == 1)
         let order = try await client.graphQLCreateOrder(cart, accessToken: "test-token")
         #expect(order.id == "o-1")
+        #expect(MockBFFURLProtocol.lastRequestBody.contains("idempotencyKey"))
     }
 
     @Test func liveBffCommerceFlowWhenConfigured() async throws {
