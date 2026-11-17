@@ -13,7 +13,9 @@ on:
     branches: [main]
 
 concurrency:
-  group: storemesh-ios-ci-${{ github.ref }}
+  # Keep a manual validation run from cancelling the pull-request validation
+  # that GitHub starts automatically after a branch update.
+  group: storemesh-ios-ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 permissions:
