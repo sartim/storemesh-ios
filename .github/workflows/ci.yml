@@ -11,6 +11,7 @@ permissions:
 jobs:
   test:
     runs-on: macos-15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       # Do not pin an SDK runtime: GitHub-hosted macOS images rotate the
