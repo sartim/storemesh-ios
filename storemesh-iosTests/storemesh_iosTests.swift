@@ -16,7 +16,8 @@ private final class MockBFFURLProtocol: URLProtocol {
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
-        if let body = request.httpBody, let bodyText = String(data: body, encoding: .utf8) {
+        let body = request.httpBody ?? request.httpBodyStream.flatMap(Self.readBody)
+        if let body, let bodyText = String(data: body, encoding: .utf8) {
             Self.lastRequestBody = bodyText
         }
         let payload: String
@@ -35,6 +36,19 @@ private final class MockBFFURLProtocol: URLProtocol {
         client?.urlProtocolDidFinishLoading(self)
     }
     override func stopLoading() {}
+
+    private static func readBody(from stream: InputStream) -> Data {
+        stream.open()
+        defer { stream.close() }
+        var data = Data()
+        var buffer = [UInt8](repeating: 0, count: 4096)
+        while stream.hasBytesAvailable {
+            let count = stream.read(&buffer, maxLength: buffer.count)
+            guard count > 0 else { break }
+            data.append(buffer, count: count)
+        }
+        return data
+    }
 }
 
 struct storemesh_iosTests {
