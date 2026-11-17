@@ -2,6 +2,12 @@ name: iOS CI
 
 on:
   workflow_dispatch:
+    inputs:
+      run_ui_smoke:
+        description: Run the simulator UI smoke job
+        required: false
+        default: false
+        type: boolean
   pull_request:
   push:
     branches: [main]
@@ -54,6 +60,7 @@ jobs:
     runs-on: macos-14
     timeout-minutes: 15
     needs: test
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_ui_smoke }}
     steps:
       - uses: actions/checkout@v4
       - name: Ensure iOS Simulator runtime is available
