@@ -24,6 +24,10 @@ jobs:
       - name: Ensure iOS Simulator runtime is available
         run: |
           set -euo pipefail
+          if xcrun simctl list devices available | grep -q 'iPhone'; then
+            echo "Using preinstalled iPhone simulator runtime"
+            exit 0
+          fi
           xcrun simctl list devices >/dev/null 2>&1 || true
           for attempt in 1 2 3; do
             if xcodebuild -downloadPlatform iOS; then
@@ -55,6 +59,10 @@ jobs:
       - name: Ensure iOS Simulator runtime is available
         run: |
           set -euo pipefail
+          if xcrun simctl list devices available | grep -q 'iPhone'; then
+            echo "Using preinstalled iPhone simulator runtime"
+            exit 0
+          fi
           for attempt in 1 2 3; do
             if xcodebuild -downloadPlatform iOS; then
               exit 0
