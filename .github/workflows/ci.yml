@@ -2,12 +2,20 @@ name: iOS CI
 
 on:
   workflow_dispatch:
+    inputs:
+      run_ui_smoke:
+        description: Run the simulator UI smoke job
+        required: false
+        default: false
+        type: boolean
   pull_request:
   push:
     branches: [main]
 
 concurrency:
-  group: storemesh-ios-ci-${{ github.ref }}
+  # Keep a manual validation run from cancelling the pull-request validation
+  # that GitHub starts automatically after a branch update.
+  group: storemesh-ios-ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 permissions:
@@ -16,7 +24,7 @@ permissions:
 jobs:
   test:
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       # Do not pin an SDK runtime: GitHub-hosted macOS images rotate the
@@ -24,6 +32,10 @@ jobs:
       - name: Ensure iOS Simulator runtime is available
         run: |
           set -euo pipefail
+          if xcrun simctl list devices available | grep -q 'iPhone'; then
+            echo "Using preinstalled iPhone simulator runtime"
+            exit 0
+          fi
           xcrun simctl list devices >/dev/null 2>&1 || true
           for attempt in 1 2 3; do
             if xcodebuild -downloadPlatform iOS; then
@@ -33,7 +45,7 @@ jobs:
             sleep 10
           done
           exit 1
-      - name: Run unit and UI tests
+      - name: Run unit contract tests
         run: |
           set -euo pipefail
           device_id="$(xcrun simctl list devices available | awk -F '[()]' '/iPhone/{print $2; exit}')"
@@ -42,5 +54,41 @@ jobs:
             -project StoreMesh.xcodeproj \
             -scheme storemesh-ios \
             -destination "id=$device_id" \
+            -only-testing:storemesh-iosTests \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO
+
+  ui-smoke:
+    runs-on: macos-15
+    timeout-minutes: 15
+    needs: test
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_ui_smoke }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure iOS Simulator runtime is available
+        run: |
+          set -euo pipefail
+          if xcrun simctl list devices available | grep -q 'iPhone'; then
+            echo "Using preinstalled iPhone simulator runtime"
+            exit 0
+          fi
+          for attempt in 1 2 3; do
+            if xcodebuild -downloadPlatform iOS; then
+              exit 0
+            fi
+            echo "Simulator runtime provisioning attempt ${attempt} failed; retrying..."
+            sleep 10
+          done
+          exit 1
+      - name: Run UI smoke tests
+        run: |
+          set -euo pipefail
+          device_id="$(xcrun simctl list devices available | awk -F '[()]' '/iPhone/{print $2; exit}')"
+          test -n "$device_id"
+          xcodebuild test \
+            -project StoreMesh.xcodeproj \
+            -scheme storemesh-ios \
+            -destination "id=$device_id" \
+            -only-testing:storemesh-iosUITests \
             -parallel-testing-enabled NO \
             CODE_SIGNING_ALLOWED=NO

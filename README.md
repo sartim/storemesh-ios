@@ -102,6 +102,12 @@ next `MAJOR.MINOR.PATCH` from Conventional Commits, stamps
 `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`, creates the GitHub
 release/tag, and builds the simulator target. Signing and App Store
 distribution can be added later through protected GitHub Environment secrets.
+
+## CI validation modes
+
+The **iOS CI** workflow always runs the unit/contract job. When started with
+`workflow_dispatch`, leave `run_ui_smoke` disabled for fast API and model
+validation; enable it when a hosted iPhone Simulator launch check is needed.
 ## API transport
 
 The app uses the Go BFF as its only API origin. Catalog and cart reads use the
